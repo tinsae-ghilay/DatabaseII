@@ -4,7 +4,7 @@
 
 Prepared statements are not persisted. i.e only available for a single session. the cannot be shared among Users
 
-```
+```sql
 -- create it 
 PREPARE getActorName(INTEGER) AS
 SELECT * FROM actor WHERE actor_id = $1;
@@ -21,7 +21,7 @@ Functions and Procedures are stored and are not dependent on a session.
 Procedures dont have a return value (Void) so we dont add RETURNS, nor can we expect a table or resul.
 they are basically functions without a return type
 
-```
+```sql
 -- create it
 CREATE OR REPLACE PROCEDURE CreateActor (
  firstname varchar (255) ,
@@ -49,7 +49,8 @@ DROP PROCEDURE IF EXISTS createActor(); -- just like a function
 
 #### Functions
 Functions have return value unlike Procedures
-```
+
+```sql
 -- create it
 CREATE OR REPLACE FUNCTION getFilmName(f_id INTEGER) 
 RETURNS TEXT AS $$
@@ -68,7 +69,8 @@ SELECT getFilmName(20);
 DROP getFilmName(INTEGER) -- full function signature
 ```
 #### Declare and Return Types
-```
+
+```sql
 CREATE OR REPLACE FUNCTION getFilmDescription(film_title varchar)
 -- if we dont know the type of content in the column description in table film is
 -- we do a tablename.column%TYPE. 
