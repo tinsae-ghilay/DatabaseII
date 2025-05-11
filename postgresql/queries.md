@@ -85,7 +85,7 @@ LANGUAGE plpgsql;
 
 #### IN, OUT and INOUT
 
-```sqlite3
+```sql
 -- create it
 CREATE OR REPLACE FUNCTION getStat(
 	OUT min_length INTEGER,
