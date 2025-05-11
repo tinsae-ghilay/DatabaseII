@@ -66,7 +66,7 @@ SELECT getFilmName(20);
 
 -- drop it
 
-DROP getFilmName(INTEGER) -- full function signature
+DROP getFilmName(INTEGER) -- full function signature works
 ```
 #### Declare and Return Types
 
@@ -105,6 +105,6 @@ SELECT getStat();
 
 -- drop it
 
-DROP FUNCTION IF EXISTS getStat()
+DROP FUNCTION IF EXISTS getStat -- simple name of the function works
 
 ```
