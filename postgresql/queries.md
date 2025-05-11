@@ -108,3 +108,44 @@ SELECT getStat();
 DROP FUNCTION IF EXISTS getStat -- simple name of the function works
 
 ```
+
+##### Loops and conditions in Functions and procedures
+The thing to remember is Functions have return values and Procedures dont. so remember that no `IF` condition ends wthout a `RETURN ` statement.
+**Syntax** 
+
+```sql
+-- conditions
+BEGIN 
+    IF condition THEN
+    -- do stud
+    ELSIF condition THEN
+    -- do another
+    END IF;
+END;
+
+-- and loops
+
+BEGIN 
+    LOOP
+        EXIT WHEN <condition>
+        -- do stuff
+    END LOOP;
+END;
+
+-- while loops
+
+WHILE <condition> LOOP
+    -- do stuff
+END LOOP;
+
+-- for loop
+FOR <variable> IN <start> , <end> 
+[BY <val>] LOOP
+
+    -- do stuff
+END LOOP;
+
+-- foreach loop
+FOR <variable> IN <query> LOOP
+   -- do stuff
+END LOOP;
