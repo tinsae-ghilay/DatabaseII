@@ -1,7 +1,7 @@
 # Neo4j in cypher
 
 ### create 
-Creating a node
+##### Creating a node
 ```sql
 -- Creating a single Node
 CREATE (p:Person {name: 'Alice', age: 30, city: 'New York'}) 
@@ -18,7 +18,7 @@ CREATE (a:Person:Actor {name: 'Tom Hanks'})
 -- Mergng a Node (creats if one doesnt exist, else matches it)
 MERGE (g:Genre {name: 'Science Fiction'})
 ```
-Creating Relationships
+##### Creating Relationships
 ```sql
 -- get Nodes using match with parameter, and create relationshp
 MATCH (a:Person {name: 'Keanu Reeves'}), (m:Movie {title: 'The Matrix'})
@@ -36,8 +36,9 @@ CREATE (director:Person {name: 'Lana Wachowski'})-[:DIRECTED]->(matrix:Movie {ti
 MATCH (charlie:Person {name: 'Charlie'})
 MERGE (charlie)-[:WORKS_FOR]->(company:Company {name: 'ABC Corp'})
 ```
+### projection
 
-Projecting. The most common
+##### Projecting. The most common
 ```sql
 MATCH (n) RETURN n -- returns every thing
 
@@ -56,7 +57,7 @@ MATCH (p:Person {city: 'New York'})
 RETURN p.name
 ```
 
-Retrieving Nodes and relationships
+##### Retrieving Nodes and relationships
 ```sql
 -- get all persons who acted in a movie
 -- return name relationship movie title and role
@@ -82,7 +83,7 @@ MATCH p = shortestPath((p1)-[*]->(p2))
 RETURN p
 ```
 
-Filtering results using WHERE clause
+##### Filtering results using WHERE clause
 ```sql
 -- simple
 MATCH (m:Movie)
