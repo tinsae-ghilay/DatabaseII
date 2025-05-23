@@ -208,3 +208,51 @@ HVALS user:100 # Returns "100", "Alice", "31", "New York", "10"
 # HSTRLEN key field
 # Get the length of the value of a hash field. (Introduced in Redis 3.2)
 HSTRLEN user:100 name # Returns 5 (length of "Alice")
+```
+
+### For list
+
+```bash
+ # LPUSH key value [value ...]
+# Add elements to the **head** (left side) of a list.
+LPUSH mylist "itemC" "itemB" "itemA"
+
+# RPUSH key value [value ...]
+# Add elements to the **tail** (right side) of a list.
+RPUSH mylist "itemD" "itemE"
+
+# LRANGE key start stop
+# Get a range of elements from a list by index. `0` is the first element, `-1` is the last.
+LRANGE mylist 0 -1
+
+# LPOP key
+# Remove and return the element from the **head** of the list.
+LPOP mylist
+
+# RPOP key
+# Remove and return the element from the **tail** of the list.
+RPOP mylist
+
+# LLEN key
+# Get the length of a list.
+LLEN mylist
+LINDEX mylist 1 # Returns "itemA"
+LREM mylist 2 # removes the second item from list
+LINSERT mylist BEFORE "itemD" "newItem" # List: ["itemB", "newItem", "itemD", "itemX", "itemA"]
+```
+### rename 
+on any type remname key like so
+```bash
+RENAME oldname newname  # key oldname changes to newname
+```
+### publish - subscribe
+
+Redis can also be used for message passing
+```bash
+# In one redis-cli:
+SUBSCRIBE news_feed
+
+# In another redis-cli:
+PUBLISH news_feed "Breaking news: Redis is awesome!"
+# The first client will receive the message.
+```
