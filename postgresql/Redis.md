@@ -256,3 +256,38 @@ SUBSCRIBE news_feed
 PUBLISH news_feed "Breaking news: Redis is awesome!"
 # The first client will receive the message.
 ```
+
+
+### Redis caching.
+```Python
+def get_cities_of_continent(continent):
+    if continent not in ["Asia", "Antarctica", "Oceania", "North America", "South America", "Europe", "Africa"]:
+        print(f"Given continent ({continent}) not supported")
+        return []
+    
+    statement = text("""
+    SELECT ct.name AS "City", cn.name AS "Country" 
+    FROM city ct
+    JOIN country cn ON (ct.countrycode=cn.code)
+    WHERE cn.continent= :continent;
+    """)
+    
+    replacements = {
+        "continent" : continent 
+    }
+    
+    # connect to database
+    with engine.connect() as con:
+        # execute the query
+        # result of execute is an object that contains the column names as keys() and can be iterated to access the resulting rows
+        res = con.execute(statement, **replacements)
+        # dump all resulting rows into a list
+        rows = [r for r in res]
+        cities = []
+        for row in rows:
+            # TODO
+            cities.append(City(row["City"],row["Country"]))
+            pass
+        return cities
+
+```
