@@ -2,7 +2,7 @@
 
 ### Relationships
 
-#### OneToOne
+#### OneToOne (1:1)
 for one to one, we add an object on one side
 ```java
 @Entity
@@ -37,7 +37,7 @@ public class Address{
 }
 ```
 
-##### embedable
+##### Embedable
 No key required and Embeded entity must not be an Entity. so no `@Entity` required
 Object data is embeded in the Table (Embeder) itself
 ```java
@@ -106,7 +106,7 @@ public class Address{
 }
 ```
 
-#### Many To Many
+#### Many To Many (N:M)
 
 For a Many To Many relationship we add a List of each other on both sides. But on one side we do `MappedBy` and on the other side we add 
 ```java
