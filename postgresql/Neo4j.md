@@ -136,6 +136,11 @@ RETURN p.name
 SKIP 5 LIMIT 5 -- skip the first 5 and return 5 nodes
 ```
 
+Wild cards querying
+```bash
+MATCH(n:Person)-[r:ACTED_IN]->(m:Movie) WHERE m.title=~ "T.*" RETURN n,m
+```
+
 
 
 
