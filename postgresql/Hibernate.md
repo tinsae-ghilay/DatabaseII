@@ -2,7 +2,7 @@
 
 ### Relationships
 
-##### OneToOne
+#### OneToOne
 for one to one, we add an object on one side
 ```java
 @Entity
@@ -37,7 +37,7 @@ public class Address{
 }
 ```
 
-#### embedable
+##### embedable
 No key required and Embeded entity must not be an Entity. so no `@Entity` required
 Object data is embeded in the Table (Embeder) itself
 ```java
